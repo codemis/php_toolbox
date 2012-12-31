@@ -3,6 +3,8 @@ PHP Toolbox
 
 A library of various PHP classes useful for developing PHP websites.
 
+Requires PHP 5.3 >
+
 Testing
 -------
 

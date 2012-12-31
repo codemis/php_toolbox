@@ -1,13 +1,34 @@
 <?php
-require_once(__DIR__."/../CachedRequest.php");
-require_once(__DIR__."/../CurlUtility.php");
+/**
+ * This file is part of Curl Utility.
+ * 
+ * Curl Utility is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * Curl Utility is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see 
+ * <http://www.gnu.org/licenses/>.
+ *
+ * @author Johnathan Pulos <johnathan@missionaldigerati.org>
+ * @copyright Copyright 2012 Missional Digerati
+ * 
+ */
+namespace PHPToolbox\CachedRequest;
+
 /**
  * A test for the CachedRequest class
  *
  * @package default
  * @author Johnathan Pulos
  */
-class CachedRequestTest extends PHPUnit_Framework_TestCase {
+class CachedRequestTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * The cachedRequest Object
 	 *
@@ -24,7 +45,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 	 * @author Johnathan Pulos
 	 */
 	public function setUp() {
-		$this->cachedRequest = new CachedRequest();
+		$this->cachedRequest = new CachedRequest;
 	}
 	
 	/**
@@ -108,7 +129,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		$reference = 'giant_smashing_robots';
 		$cachedFile = $this->cachedRequest->getCacheFilename($reference);
 		$this->removeIfFileExists($cachedFile);
-		$method = new ReflectionMethod('CachedRequest', 'makeRequest');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'makeRequest');
 		$method->setAccessible(TRUE);
 		$method->invoke($this->cachedRequest, 'GET', 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots', array(), $reference);
 		$this->assertTrue(file_exists($cachedFile));
@@ -131,15 +152,15 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		 *
 		 * @author Johnathan Pulos
 		 */
-		$curlUtilityMock = $this->getMock('CurlUtility', array('makeRequest'));
+		$curlUtilityMock = $this->getMock('PHPToolbox\CachedRequest\CurlUtility', array('makeRequest'));
 		$curlUtilityMock->expects($this->once())
 										->method('makeRequest')
 										->with('http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots', 'GET', array())
 										->will($this->returnValue($expected));
-		$method = new ReflectionMethod('CachedRequest', 'setCurlUtilityObject');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'setCurlUtilityObject');
 		$method->setAccessible(TRUE);
 		$method->invoke($this->cachedRequest, $curlUtilityMock);
-		$method = new ReflectionMethod('CachedRequest', 'makeRequest');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'makeRequest');
 		$method->setAccessible(TRUE);
 		$results = $method->invoke($this->cachedRequest, 'GET', 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots', array(), $reference);
 		$this->assertEquals($expected, $results);
@@ -164,10 +185,10 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		$curlUtilityMock = $this->getMock('CurlUtility', array('makeRequest'));
 		$curlUtilityMock->expects($this->never())
 										->method('makeRequest');
-		$method = new ReflectionMethod('CachedRequest', 'setCurlUtilityObject');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'setCurlUtilityObject');
 		$method->setAccessible(TRUE);
 		$method->invoke($this->cachedRequest, $curlUtilityMock);
-		$method = new ReflectionMethod('CachedRequest', 'makeRequest');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'makeRequest');
 		$method->setAccessible(TRUE);
 		$method->invoke($this->cachedRequest, 'GET', 'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots', array(), $reference);
 	}
@@ -184,7 +205,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		$reference = 'giant_smashing_robots_again';
 		$cachedFile = $this->cachedRequest->getCacheFilename($reference);
 		$this->removeIfFileExists($cachedFile);
-		$method = new ReflectionMethod('CachedRequest', 'writeCacheFile');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'writeCacheFile');
 		$method->setAccessible(TRUE);
 		$method->invoke($this->cachedRequest, 'Here is some content.', $reference);
 		$this->assertTrue(file_exists($cachedFile));
@@ -203,7 +224,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		$reference = 'i_am_a_cached_file';
 		$cachedFile = $this->cachedRequest->getCacheFilename($reference);
 		$this->createIfNotExistantFile($cachedFile);
-		$method = new ReflectionMethod('CachedRequest', 'isCached');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'isCached');
 		$method->setAccessible(TRUE);
 		$exists = $method->invoke($this->cachedRequest, $reference);
 		$this->assertTrue($exists);
@@ -221,7 +242,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		$reference = 'i_am_an_uncached_file';
 		$cachedFile = $this->cachedRequest->getCacheFilename($reference);
 		$this->removeIfFileExists($cachedFile);
-		$method = new ReflectionMethod('CachedRequest', 'isCached');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'isCached');
 		$method->setAccessible(TRUE);
 		$exists = $method->invoke($this->cachedRequest, $reference);
 		$this->assertFalse($exists);
@@ -241,7 +262,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 		$cachedFile = $this->cachedRequest->getCacheFilename($reference);
 		$this->createIfNotExistantFile($cachedFile);
 		sleep(1);
-		$method = new ReflectionMethod('CachedRequest', 'isCached');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'isCached');
 		$method->setAccessible(TRUE);
 		$exists = $method->invoke($this->cachedRequest, $reference);
 		$this->assertFalse($exists);
@@ -258,7 +279,7 @@ class CachedRequestTest extends PHPUnit_Framework_TestCase {
 	public function testSafeFilenameMakesItSafe() {
 		$reference = '#$i am ^&a bad ()@##name';
 		$expected = 'iamabadname';
-		$method = new ReflectionMethod('CachedRequest', 'safeFilename');
+		$method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'safeFilename');
 		$method->setAccessible(TRUE);
 		$actual = $method->invoke($this->cachedRequest, $reference);
 		$this->assertEquals($expected, $actual);

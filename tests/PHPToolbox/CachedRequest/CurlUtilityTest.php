@@ -1,12 +1,13 @@
 <?php
-require_once(__DIR__."/../CurlUtility.php");
+namespace PHPToolbox\CachedRequest;
+
 /**
  * A test for the CurlUtility class
  *
  * @package default
  * @author Johnathan Pulos
  */
-class CurlUtilityTest extends PHPUnit_Framework_TestCase {
+class CurlUtilityTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * The CurlUtility Object
 	 *
@@ -23,7 +24,7 @@ class CurlUtilityTest extends PHPUnit_Framework_TestCase {
 	 * @author Johnathan Pulos
 	 */
 	public function setUp() {
-		$this->curlUtility = new CurlUtility();
+		$this->curlUtility = new CurlUtility;
 	}
 	
 	/**
