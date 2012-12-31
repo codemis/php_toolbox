@@ -32,6 +32,11 @@ All the code has been tested using [PHPUnit](www.phpunit.de).  You can run the t
 
 `phpunit tests/`
 
+Usage
+-----
+
+The code here adheres to the [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding style.  You should use a PHP autoloader like [Aura AutoLoader](https://github.com/auraphp/Aura.Autoload) to load these classes.
+
 Development
 -----------
 
