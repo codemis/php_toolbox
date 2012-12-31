@@ -20,5 +20,14 @@
  * @copyright Copyright 2012 Missional Digerati
  * 
  */
-require_once(__DIR__ . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "PHPToolbox" . DIRECTORY_SEPARATOR . "CachedRequest" . DIRECTORY_SEPARATOR . "CurlUtility.php");
-require_once(__DIR__ . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "PHPToolbox" . DIRECTORY_SEPARATOR . "CachedRequest" . DIRECTORY_SEPARATOR . "CachedRequest.php");
+$cachedRequestPath =
+    __DIR__ .
+    DIRECTORY_SEPARATOR .
+    "src" .
+    DIRECTORY_SEPARATOR .
+    "PHPToolbox" .
+    DIRECTORY_SEPARATOR .
+    "CachedRequest" .
+    DIRECTORY_SEPARATOR;
+require_once($cachedRequestPath . "CurlUtility.php");
+require_once($cachedRequestPath . "CachedRequest.php");
