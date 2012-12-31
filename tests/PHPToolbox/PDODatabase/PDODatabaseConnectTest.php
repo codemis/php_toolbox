@@ -38,13 +38,6 @@ class PDODatabaseConnectTest extends \PHPUnit_Framework_TestCase
      */
     private $pdoDatabaseConnect;
     /**
-     * The database settings
-     *
-     * @var array
-     * @access public
-     */
-    private $databaseSettings = array();
-    /**
      * Setup the testing environment
      *
      * @return void
@@ -54,34 +47,29 @@ class PDODatabaseConnectTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->pdoDatabaseConnect = PDODatabaseConnect::getInstance();
-        $this->databaseSettings = new \tests\support\DatabaseSettings;
     }
     /**
-     * Checks if a connection can be made
+     * PDODatabaseConnect::getInstance() should return the PDODatabaseConnect Instance
      *
-     * @covers PDODatabaseConnect::getDatabaseInstance
+     * @covers PDODatabaseConnect::getInstance
      * @access public
      * @author Johnathan Pulos
      */
-    public function testShouldMakeADatabaseConnection()
+    public function testGetInstanceShouldReturnInstanceOfClass()
     {
-        $this->pdoDatabaseConnect->setDatabaseSettings($this->databaseSettings);
-        $db = $this->pdoDatabaseConnect->getDatabaseInstance();
-        $this->assertTrue(is_object($db));
-        $this->assertEquals('PDO', get_class($db));
+        $this->assertTrue(is_object($this->pdoDatabaseConnect));
+        $this->assertEquals('PHPToolbox\PDODatabase\PDODatabaseConnect', get_class($this->pdoDatabaseConnect));
     }
     /**
-     * Tests that an error is thrown with wrong credentials
+     * For it to be a singleton, you should not be allowed to call the construct method
      *
-     * @expectedException PDOException
-     * @covers PDODatabaseConnect::getDatabaseInstance
+     * @covers PDODatabaseConnect::__construct
      * @access public
      * @author Johnathan Pulos
      */
-    public function testGetDatabaseConnectionShouldErrorIfWrongCredentials()
+    public function testConstructShouldBePrivate()
     {
-        $this->databaseSettings->default['password'] = 'WRONGPASS';
-        $this->pdoDatabaseConnect->setDatabaseSettings($this->databaseSettings);
-        $db = $this->pdoDatabaseConnect->getDatabaseInstance();
+        $method = new \ReflectionMethod('PHPToolbox\PDODatabase\PDODatabaseConnect', '__construct');
+        $this->assertTrue($method->isPrivate());
     }
 }

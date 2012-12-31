@@ -82,7 +82,9 @@ class PDODatabaseConnect
      */
     public function getDatabaseInstance()
     {
-        $this->PDO = $this->getConnection();
+        if(!$this->PDO) {
+           $this->PDO = $this->getConnection();
+        }
         return $this->PDO;
     }
     /**

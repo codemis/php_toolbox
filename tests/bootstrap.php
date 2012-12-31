@@ -26,17 +26,6 @@
  * @author Johnathan Pulos
  */
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src.php';
-$databaseSettings = 
-    dirname(__DIR__) .
-    DIRECTORY_SEPARATOR .
-    'tests' .
-    DIRECTORY_SEPARATOR .
-    'support' .
-    DIRECTORY_SEPARATOR .
-    'DatabaseSettings.php';
-if (file_exists($databaseSettings)) {
-    require_once $databaseSettings;
-}
 /**
  * autoload test files
  *
