@@ -20,7 +20,6 @@
  * @copyright Copyright 2012 Missional Digerati
  * 
  */
-echo "here";
 /**
  * preload source files
  *
