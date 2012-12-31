@@ -36,11 +36,6 @@ $databaseSettings =
     'DatabaseSettings.php';
 if (file_exists($databaseSettings)) {
     require_once $databaseSettings;
-} else {
-   trigger_error(
-        "Please rename the DatabaseSettings.Sample.php to DatabaseSettings.php, and set the settings",
-        E_USER_ERROR
-    ); 
 }
 /**
  * autoload test files
