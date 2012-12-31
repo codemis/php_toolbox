@@ -20,41 +20,26 @@
  * @copyright Copyright 2012 Missional Digerati
  * 
  */
+namespace tests\support;
+
 /**
- * preload source files
- *
- * @author Johnathan Pulos
- */
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src.php';
-$databaseSettings = 
-    dirname(__DIR__) .
-    DIRECTORY_SEPARATOR .
-    'tests' .
-    DIRECTORY_SEPARATOR .
-    'support' .
-    DIRECTORY_SEPARATOR .
-    'DatabaseSettings.php';
-if (file_exists($databaseSettings)) {
-    require_once $databaseSettings;
-} else {
-   trigger_error(
-        "Please rename the DatabaseSettings.Sample.php to DatabaseSettings.php, and set the settings",
-        E_USER_ERROR
-    ); 
-}
-/**
- * autoload test files
+ * A class that holds the database settings, please rename to database_settings.php
  *
  * @package default
  * @author Johnathan Pulos
  */
-spl_autoload_register(
-    function ($class) {
-        $file = dirname(__DIR__). DIRECTORY_SEPARATOR
-              . 'tests' . DIRECTORY_SEPARATOR
-              . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-        if (file_exists($file)) {
-            require $file;
-        }
-    }
-);
+class DatabaseSettings
+{
+    /**
+     * The default database to use
+     *
+     * @var array
+     * @access public
+     */
+    public $default = array(
+        'host'      =>  'localhost',
+        'name'      =>  'jp',
+        'username'  =>  'jp',
+        'password'  =>  'jp'
+    );
+}

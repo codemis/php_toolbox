@@ -20,14 +20,15 @@
  * @copyright Copyright 2012 Missional Digerati
  * 
  */
-$cachedRequestPath =
-    __DIR__ .
-    DIRECTORY_SEPARATOR .
-    "src" .
-    DIRECTORY_SEPARATOR .
-    "PHPToolbox" .
-    DIRECTORY_SEPARATOR .
-    "CachedRequest" .
-    DIRECTORY_SEPARATOR;
+$phpToolboxPath =
+     __DIR__ .
+     DIRECTORY_SEPARATOR .
+     "src" .
+     DIRECTORY_SEPARATOR .
+     "PHPToolbox" .
+     DIRECTORY_SEPARATOR;
+$cachedRequestPath = $phpToolboxPath . "CachedRequest" . DIRECTORY_SEPARATOR;
+$pdoDatabasePath = $phpToolboxPath . "PDODatabase" . DIRECTORY_SEPARATOR;
 require_once($cachedRequestPath . "CurlUtility.php");
 require_once($cachedRequestPath . "CachedRequest.php");
+require_once($pdoDatabasePath . "PDODatabaseConnect.php");
