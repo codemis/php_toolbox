@@ -38,6 +38,13 @@ class CurlUtility
      */
     public $responseCode = 0;
     /**
+     * The last URL visited by cURL
+     *
+     * @var string
+     * @access public
+     **/
+    public $lastVisitedURL = "";
+    /**
      * Make a cURL Request
      *
      * @param string $url the url to request
@@ -82,6 +89,7 @@ class CurlUtility
          */
         $result = curl_exec($ch) or die(curl_error($ch));
         $this->responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $this->lastVisitedURL = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
         /**
          * close connection
          *

@@ -81,4 +81,24 @@ class CurlUtilityTest extends \PHPUnit_Framework_TestCase
         $actual = $this->curlUtility->urlify(array("me" => "Johnathan", "you" => "Programmer"));
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * Tests makeRequest() to assure it sets the lastVisitedURL
+     *
+     * @covers CurlUtility::makeRequest
+     * @return void
+     * @author Johnathan Pulos
+     **/
+    public function testMakeRequestSetsLastVistedURL()
+    {
+        $expected = "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots";
+        $results = $this->curlUtility->makeRequest(
+            $expected,
+            "GET"
+        );
+        $actual = $this->curlUtility->lastVisitedURL;
+        $this->assertTrue($actual != "");
+        $exists = strpos($actual, $expected) !== false;
+        $this->assertTrue($exists);
+    }
 }
