@@ -202,6 +202,28 @@ class CachedRequestTest extends \PHPUnit_Framework_TestCase
         );
     }
     /**
+     * Tests makeRequest() sets the response code correctly
+     *
+     * @return void
+     * @author Johnathan Pulos
+     **/
+    public function testMakeRequestSetsResponseCode()
+    {
+        $default = $this->cachedRequest->responseCode;
+        $method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'makeRequest');
+        $method->setAccessible(true);
+        $method->invoke(
+            $this->cachedRequest,
+            'GET',
+            'http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots',
+            array(),
+            'giant_smashing_robots_with_mock_cached'
+        );
+        $actual = $this->cachedRequest->responseCode;
+        $this->assertNotEquals($default, $actual);
+        $this->assertEquals($this->cachedRequest->responseCode, 200);
+    }
+    /**
      * Tests that writeCacheFile() writes content to a cache file
      * 
      * @covers CachedResult::writeCacheFile
