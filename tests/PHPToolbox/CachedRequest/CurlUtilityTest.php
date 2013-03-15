@@ -101,4 +101,23 @@ class CurlUtilityTest extends \PHPUnit_Framework_TestCase
         $exists = strpos($actual, $expected) !== false;
         $this->assertTrue($exists);
     }
+
+    /**
+     * Tests makeRequest() to assure it sets responseCode
+     *
+     * @covers CurlUtility::makeRequest
+     * @return void
+     * @author Johnathan Pulos
+     **/
+    public function testMakeRequestSetsResponseCode()
+    {
+        $default = $this->curlUtility->responseCode;
+        $results = $this->curlUtility->makeRequest(
+            "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots",
+            "GET"
+        );
+        $actual = $this->curlUtility->responseCode;
+        $this->assertNotEquals($default, $actual);
+        $this->assertEquals($this->curlUtility->responseCode, 200);
+    }
 }
