@@ -153,7 +153,7 @@ class CachedRequest
      * @param string $reference the reference used in the request
      * @return string
      * @access private
-     * @author Johnathan Pulos
+* @author Johnathan Pulos
      */
     private function makeRequest($method, $url, $fields, $reference)
     {
