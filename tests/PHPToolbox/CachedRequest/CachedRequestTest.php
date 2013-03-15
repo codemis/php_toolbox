@@ -202,7 +202,7 @@ class CachedRequestTest extends \PHPUnit_Framework_TestCase
         );
     }
     /**
-     * Tests makeRequest() sets the response code correctly
+     * Tests makeRequest() sets the responseCode correctly
      *
      * @return void
      * @author Johnathan Pulos
@@ -222,6 +222,29 @@ class CachedRequestTest extends \PHPUnit_Framework_TestCase
         $actual = $this->cachedRequest->responseCode;
         $this->assertNotEquals($default, $actual);
         $this->assertEquals($this->cachedRequest->responseCode, 200);
+    }
+    /**
+     * Tests makeRequest() sets the lastVisitedURL correctly
+     *
+     * @return void
+     * @author Johnathan Pulos
+     **/
+    public function testMakeRequestSetsLastVisitedURL()
+    {
+        $expected = "http://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots";
+        $method = new \ReflectionMethod('PHPToolbox\CachedRequest\CachedRequest', 'makeRequest');
+        $method->setAccessible(true);
+        $method->invoke(
+            $this->cachedRequest,
+            'GET',
+            $expected,
+            array(),
+            'giant_smashing_robots_with_mock_cached'
+        );
+        $actual = $this->cachedRequest->lastVisitedURL;
+        $this->assertTrue($actual != "");
+        $exists = strpos($actual, $expected) !== false;
+        $this->assertTrue($exists);
     }
     /**
      * Tests that writeCacheFile() writes content to a cache file

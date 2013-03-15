@@ -48,8 +48,16 @@ class CachedRequest
      * The cURL response code
      *
      * @var integer
+     * @access public
      */
     public $responseCode = 0;
+    /**
+     * The cURL lastVisitedURL.
+     *
+     * @var string
+     * @access public
+     **/
+    public $lastVisitedURL;
     /**
      * The curlUtility object for requests
      *
@@ -152,11 +160,13 @@ class CachedRequest
         $contents = '';
         if ($this->isCached($reference)) {
             $contents = file_get_contents($this->getCacheFilename($reference));
+            $this->lastVisitedURL = $url;
             $this->responseCode = 200;
         } else {
             $contents = $this->curl->makeRequest($url, $method, $fields);
             $this->writeCacheFile($contents, $reference);
             $this->responseCode = $this->curl->responseCode;
+            $this->lastVisitedURL = $this->curl->lastVisitedURL;
         }
         return $contents;
     }
