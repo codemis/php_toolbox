@@ -78,6 +78,12 @@ class CurlUtility
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        /**
+         * Follow all redirections
+         *
+         * @author Johnathan Pulos
+         **/
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         if ($method == 'POST') {
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fieldsString);
