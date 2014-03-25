@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of Curl Utility.
+ * This file is part of PHPToolbox.
  * 
  * Curl Utility is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,15 +20,19 @@
  * @copyright Copyright 2012 Missional Digerati
  * 
  */
-$phpToolboxPath =
-     __DIR__ .
-     DIRECTORY_SEPARATOR .
-     "src" .
-     DIRECTORY_SEPARATOR .
-     "PHPToolbox" .
-     DIRECTORY_SEPARATOR;
-$cachedRequestPath = $phpToolboxPath . "CachedRequest" . DIRECTORY_SEPARATOR;
-$pdoDatabasePath = $phpToolboxPath . "PDODatabase" . DIRECTORY_SEPARATOR;
-require_once($cachedRequestPath . "CurlUtility.php");
-require_once($cachedRequestPath . "CachedRequest.php");
-require_once($pdoDatabasePath . "PDODatabaseConnect.php");
+/**
+ * Autoload the necessary classes
+ */
+spl_autoload_register(
+    function ($class) {
+        $path = __DIR__ .
+            DIRECTORY_SEPARATOR .
+            "src" .
+            DIRECTORY_SEPARATOR;
+        $file = $path .
+            str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+        if (file_exists($file)) {
+            require $file;
+        }
+    }
+);

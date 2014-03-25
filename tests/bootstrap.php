@@ -25,20 +25,4 @@
  *
  * @author Johnathan Pulos
  */
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src.php';
-/**
- * autoload test files
- *
- * @package default
- * @author Johnathan Pulos
- */
-spl_autoload_register(
-    function ($class) {
-        $file = dirname(__DIR__). DIRECTORY_SEPARATOR
-              . 'tests' . DIRECTORY_SEPARATOR
-              . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-        if (file_exists($file)) {
-            require $file;
-        }
-    }
-);
+require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'autoload.php';
