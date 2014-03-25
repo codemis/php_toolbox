@@ -93,6 +93,7 @@ class GoogleAnalytics
                 case 'aip':
                     if ((is_string($value)) || (($value != 0) && ($value != 1))) {
                         throw new \InvalidArgumentException("The following parameter must be a boolean integer either 0 or 1: " . $key);
+                        return false;
                     }
                     break;
                 case 'dns':
@@ -107,8 +108,45 @@ class GoogleAnalytics
                 case 'utt':
                     if (!is_integer($value)) {
                         throw new \InvalidArgumentException("The following parameter must be an integer: " . $key);
+                        return false;
                     }
                     break;
+            }
+        }
+        if (!array_key_exists('cid', $payload)) {
+            throw new \InvalidArgumentException("The following parameter is required: cid");
+            return false;
+        }
+        if (!array_key_exists('t', $payload)) {
+            throw new \InvalidArgumentException("The following parameter is required: t");
+            return false;
+        }
+        if (($payload['t'] == 'transaction') && (!array_key_exists('ti', $payload))) {
+            throw new \InvalidArgumentException("The following parameter is required for transaction based hit types: ti");
+            return false;
+        }
+        if ($payload['t'] == 'item') {
+            if (!array_key_exists('ti', $payload)) {
+                throw new \InvalidArgumentException("The following parameter is required for item based hit types: ti");
+                return false;
+            }
+            if (!array_key_exists('in', $payload)) {
+                throw new \InvalidArgumentException("The following parameter is required for item based hit types: in");
+                return false;
+            }
+        }
+        if ($payload['t'] == 'social') {
+            if (!array_key_exists('sn', $payload)) {
+                throw new \InvalidArgumentException("The following parameter is required for social based hit types: sn");
+                return false;
+            }
+            if (!array_key_exists('sa', $payload)) {
+                throw new \InvalidArgumentException("The following parameter is required for social based hit types: sa");
+                return false;
+            }
+            if (!array_key_exists('st', $payload)) {
+                throw new \InvalidArgumentException("The following parameter is required for social based hit types: st");
+                return false;
             }
         }
         return true;

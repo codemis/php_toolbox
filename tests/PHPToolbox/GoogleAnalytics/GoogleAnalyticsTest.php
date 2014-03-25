@@ -77,6 +77,7 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadShouldCreateTheCorrectPayload()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
             'cid'   =>  'GoogleAnalyticsTest',
             't'     =>  'pageview',
             'dh'    =>  'missionaldigerati.org',
@@ -99,6 +100,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouPassABadKey()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'bad_key'   =>  'GoogleAnalyticsTest'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -117,6 +120,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonBooleanForAIP()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'aip'   =>  'GoogleAnalyticsTest'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -135,7 +140,9 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonBooleanForJE()
     {
         $expectedPayload = array(
-            'je'   =>  'GoogleAnalyticsTest'
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
+            'je'    =>  'GoogleAnalyticsTest'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');
@@ -153,7 +160,9 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonBooleanForNI()
     {
         $expectedPayload = array(
-            'ni'   =>  'GoogleAnalyticsTest'
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
+            'ni'    =>  'GoogleAnalyticsTest'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');
@@ -171,6 +180,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonBooleanForEXF()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'exf'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -188,6 +199,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadShouldPassEvenIfBooleanIsAString()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'exf'   =>  1
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -207,7 +220,9 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForQT()
     {
         $expectedPayload = array(
-            'qt'   =>  'test'
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
+            'qt'    =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');
@@ -225,7 +240,9 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForEV()
     {
         $expectedPayload = array(
-            'ev'   =>  'test'
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
+            'ev'    =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');
@@ -243,7 +260,9 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForIQ()
     {
         $expectedPayload = array(
-            'iq'   =>  'test'
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
+            'iq'    =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');
@@ -261,6 +280,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForUTT()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'utt'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -279,6 +300,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForPLT()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'plt'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -297,6 +320,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForDNS()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'dns'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -315,6 +340,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForPDT()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'pdt'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -333,6 +360,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForRT()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'rrt'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -351,6 +380,8 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForTCP()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'tcp'   =>  'test'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
@@ -369,7 +400,174 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadThrowsErrorIfYouNonIntegerForSRT()
     {
         $expectedPayload = array(
+            't'     =>  'pageview',
+            'cid'   =>  'GoogleAnalyticsTest',
             'srt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if the required key cid is not set
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfMissingRequiredCID()
+    {
+        $expectedPayload = array(
+            't'     =>  'pageview',
+            'srt'   =>  10
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if the required key t is not set
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfMissingRequiredT()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            'srt'   =>  10
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() if hit type (t) is transaction, it throws error if your missing ti
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfTransactionHitMissingRequiredTI()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'transaction',
+            'srt'   =>  10
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() if hit type (t) is item, it throws error if your missing ti
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfItemHitMissingRequiredTI()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'item',
+            'srt'   =>  10
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() if hit type (t) is item, it throws error if your missing in
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfItemHitMissingRequiredIN()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'item',
+            'ti'    =>  'a_good_product',
+            'srt'   =>  10
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() if hit type (t) is social, it throws error if your missing sn
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfSocialHitMissingRequiredSN()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'social',
+            'srt'   =>  10,
+            'sa'    =>  'like',
+            'st'    =>  'http%3A%2F%2Ffoo.com'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() if hit type (t) is social, it throws error if your missing sa
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfSocialHitMissingRequiredSA()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'social',
+            'srt'   =>  10,
+            'sn'    =>  'facebook',
+            'st'    =>  'http%3A%2F%2Ffoo.com'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() if hit type (t) is social, it throws error if your missing st
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfSocialHitMissingRequiredST()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'social',
+            'srt'   =>  10,
+            'sn'    =>  'facebook',
+            'sa'    =>  'like'
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');
