@@ -21,8 +21,18 @@
  * 
  */
 /**
- * preload source files
- *
- * @author Johnathan Pulos
+ * Autoload the necessary classes
  */
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'autoload.php';
+spl_autoload_register(
+    function ($class) {
+        $path = __DIR__ .
+            DIRECTORY_SEPARATOR .
+            "src" .
+            DIRECTORY_SEPARATOR;
+        $file = $path .
+            str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+        if (file_exists($file)) {
+            require $file;
+        }
+    }
+);

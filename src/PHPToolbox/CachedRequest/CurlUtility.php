@@ -1,13 +1,13 @@
 <?php
 /**
- * This file is part of Curl Utility.
+ * This file is part of  PHPToolbox, a library of useful PHP code.
  * 
- * Curl Utility is free software: you can redistribute it and/or modify
+ * PHPToolbox is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * Curl Utility is distributed in the hope that it will be useful,
+ * PHPToolbox is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -17,7 +17,7 @@
  * <http://www.gnu.org/licenses/>.
  *
  * @author Johnathan Pulos <johnathan@missionaldigerati.org>
- * @copyright Copyright 2012 Missional Digerati
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * 
  */
 namespace PHPToolbox\CachedRequest;
