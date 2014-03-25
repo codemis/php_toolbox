@@ -196,4 +196,184 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
         $valid = $method->invoke($this->googleAnalytics, $expectedPayload);
         $this->assertTrue($valid);
     }
+    /**
+     * validatePayload() throws error if you pass a non integer value for qt
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForQT()
+    {
+        $expectedPayload = array(
+            'qt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for ev
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForEV()
+    {
+        $expectedPayload = array(
+            'ev'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for iq
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForIQ()
+    {
+        $expectedPayload = array(
+            'iq'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for utt
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForUTT()
+    {
+        $expectedPayload = array(
+            'utt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for plt
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForPLT()
+    {
+        $expectedPayload = array(
+            'plt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for dns
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForDNS()
+    {
+        $expectedPayload = array(
+            'dns'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for pdt
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForPDT()
+    {
+        $expectedPayload = array(
+            'pdt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for rrt
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForRT()
+    {
+        $expectedPayload = array(
+            'rrt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for tcp
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForTCP()
+    {
+        $expectedPayload = array(
+            'tcp'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non integer value for srt
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonIntegerForSRT()
+    {
+        $expectedPayload = array(
+            'srt'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
 }

@@ -95,6 +95,20 @@ class GoogleAnalytics
                         throw new \InvalidArgumentException("The following parameter must be a boolean integer either 0 or 1: " . $key);
                     }
                     break;
+                case 'dns':
+                case 'ev':
+                case 'iq':
+                case 'pdt':
+                case 'plt':
+                case 'qt':
+                case 'rrt':
+                case 'srt':
+                case 'tcp':
+                case 'utt':
+                    if (!is_integer($value)) {
+                        throw new \InvalidArgumentException("The following parameter must be an integer: " . $key);
+                    }
+                    break;
             }
         }
         return true;
