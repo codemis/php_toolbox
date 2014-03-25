@@ -31,14 +31,62 @@ namespace PHPToolbox\GoogleAnalytics;
 class GoogleAnalytics
 {
     /**
+     * The version number of the Google Analytics API
+     *
+     * @var integer
+     * @access public
+     **/
+    public $apiVersion = 1;
+    /**
+     * The Google Analytics tracking id
+     *
+     * @var string
+     * @access private
+     **/
+    private $trackingId;
+    /**
+     * An array of valid keys that can be passed in the payload.  To find out more,
+     * check out https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters.
+     *
+     * @var array
+     * @access private
+     **/
+    private $validPayloadKeys = array(
+        'aip', 'qt', 'z', 'cid', 'sc', 'dr', 'cn', 'cs', 'cm', 'ck', 'cc', 'ci', 'gclid', 'dclid', 'sr', 'vp',
+        'de', 'sd', 'ul', 'je', 'fl', 't', 'ni', 'dl', 'dh', 'dp', 'dt', 'cd', 'linkid', 'an', 'av', 'ec', 'ea',
+        'el', 'ev', 'ti', 'ta', 'tr', 'ts', 'tt', 'in', 'ip', 'iq', 'ic', 'iv', 'cu', 'sn', 'sa', 'st', 'utc',
+        'utv', 'utt', 'utl', 'plt', 'dns', 'pdt', 'rrt', 'tcp', 'srt', 'exd', 'exf'
+    );
+    /**
+     * Initialize the class
+     *
+     * @return void
+     * @access public
+     * @throws \InvalidArgumentException when you are missing a tracking id
+     * @author Johnathan Pulos
+     **/
+    public function __construct($trackingId = '')
+    {
+        if ($trackingId == '') {
+            throw new \InvalidArgumentException("Missing the required parameter trackingId.");
+        }
+        $this->trackingId = $trackingId;
+    }
+    /**
      * validates the given payload to be sent to Google
      *
      * @return boolean
      * @access private
+     * @throws \InvalidArgumentException If you pass an unacceptable key
      * @author Johnathan Pulos
      **/
     private function validatePayload($payload)
     {
+        foreach ($payload as $key => $value) {
+            if (!in_array($key, $this->validPayloadKeys)) {
+                throw new \InvalidArgumentException("The following parameter is invalid: " . $key);
+            }
+        }
         return true;
     }
 }

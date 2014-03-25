@@ -56,6 +56,18 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
         $this->googleAnalytics = new GoogleAnalytics($this->testTrackingId);
     }
     /**
+     * __construct() should throw error if you do not send the tracking id
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testInitializerShouldSendErrorIfMissingATrackingId()
+    {
+        new GoogleAnalytics('');
+    }
+    /**
      * validatePayload() should validate a correct payload
      *
      * @return void
@@ -65,8 +77,6 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadShouldCreateTheCorrectPayload()
     {
         $expectedPayload = array(
-            'v' =>  1,
-            'tid'   =>  $this->testTrackingId,
             'cid'   =>  'GoogleAnalyticsTest',
             't'     =>  'pageview',
             'dh'    =>  'missionaldigerati.org',
@@ -77,5 +87,23 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
         $method->setAccessible(true);
         $valid = $method->invoke($this->googleAnalytics, $expectedPayload);
         $this->assertTrue($valid);
+    }
+    /**
+     * validatePayload() throws error if you pass a bad key
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouPassABadKey()
+    {
+        $expectedPayload = array(
+            'bad_key'   =>  'GoogleAnalyticsTest'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
     }
 }
