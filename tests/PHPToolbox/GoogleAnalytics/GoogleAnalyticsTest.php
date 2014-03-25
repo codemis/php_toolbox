@@ -188,7 +188,7 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
     public function testValidatePayloadShouldPassEvenIfBooleanIsAString()
     {
         $expectedPayload = array(
-            'exf'   =>  '1'
+            'exf'   =>  1
         );
         $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
         $method = $googleAnalytics->getMethod('validatePayload');

@@ -91,11 +91,8 @@ class GoogleAnalytics
                 case 'ni':
                 case 'je':
                 case 'aip':
-                    /**
-                     * Do not use intval, since all strings will most likely be equal to 0
-                     */
-                    if ((strval($value) != '0') && (strval($value) != '1')) {
-                        throw new \InvalidArgumentException("The following parameter should be a boolean: " . $key);
+                    if ((is_string($value)) || (($value != 0) && ($value != 1))) {
+                        throw new \InvalidArgumentException("The following parameter must be a boolean integer either 0 or 1: " . $key);
                     }
                     break;
             }
