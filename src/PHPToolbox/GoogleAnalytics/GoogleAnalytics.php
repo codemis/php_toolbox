@@ -86,6 +86,19 @@ class GoogleAnalytics
             if (!in_array($key, $this->validPayloadKeys)) {
                 throw new \InvalidArgumentException("The following parameter is invalid: " . $key);
             }
+            switch ($key) {
+                case 'exf':
+                case 'ni':
+                case 'je':
+                case 'aip':
+                    /**
+                     * Do not use intval, since all strings will most likely be equal to 0
+                     */
+                    if ((strval($value) != '0') && (strval($value) != '1')) {
+                        throw new \InvalidArgumentException("The following parameter should be a boolean: " . $key);
+                    }
+                    break;
+            }
         }
         return true;
     }

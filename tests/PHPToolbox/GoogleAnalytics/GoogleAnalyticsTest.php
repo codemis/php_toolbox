@@ -106,4 +106,94 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
         $method->setAccessible(true);
         $method->invoke($this->googleAnalytics, $expectedPayload);
     }
+    /**
+     * validatePayload() throws error if you pass a non boolean value for aip
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonBooleanForAIP()
+    {
+        $expectedPayload = array(
+            'aip'   =>  'GoogleAnalyticsTest'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non boolean value for je
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonBooleanForJE()
+    {
+        $expectedPayload = array(
+            'je'   =>  'GoogleAnalyticsTest'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non boolean value for ni
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonBooleanForNI()
+    {
+        $expectedPayload = array(
+            'ni'   =>  'GoogleAnalyticsTest'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() throws error if you pass a non boolean value for exf
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfYouNonBooleanForEXF()
+    {
+        $expectedPayload = array(
+            'exf'   =>  'test'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
+    /**
+     * validatePayload() should pass even if boolean var is string
+     *
+     * @return void
+     * @access public
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadShouldPassEvenIfBooleanIsAString()
+    {
+        $expectedPayload = array(
+            'exf'   =>  '1'
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $valid = $method->invoke($this->googleAnalytics, $expectedPayload);
+        $this->assertTrue($valid);
+    }
 }
