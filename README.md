@@ -10,12 +10,12 @@ Testing
 
 All the code has been tested using [PHPUnit](www.phpunit.de).  You can run the tests by calling:
 
-`phpunit tests/`
+`phpunit ./tests/`
 
 Usage
 -----
 
-The code here adheres to the [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding style.  You should use a PHP autoloader like [Aura AutoLoader](https://github.com/auraphp/Aura.Autoload) to load these classes.
+The code here adheres to the [PHP Framework Interop Group's Accepted Standards](http://www.php-fig.org/psr/) coding style.  You should use a PHP autoloader like [Aura AutoLoader](https://github.com/auraphp/Aura.Autoload) to load these classes.  You can also include the `autoload.php` file that will automatically autoload these classes.
 
 Development
 -----------
