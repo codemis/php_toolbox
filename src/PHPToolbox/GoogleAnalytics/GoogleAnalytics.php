@@ -58,6 +58,13 @@ class GoogleAnalytics
         'utv', 'utt', 'utl', 'plt', 'dns', 'pdt', 'rrt', 'tcp', 'srt', 'exd', 'exf'
     );
     /**
+     * An array of valid Hit Types for Google Analytics
+     *
+     * @var array
+     * @access private
+     **/
+    private $validHitTypes = array('pageview', 'appview', 'event', 'transaction', 'item', 'social', 'exception', 'timing');
+    /**
      * Initialize the class
      *
      * @return void
@@ -126,6 +133,10 @@ class GoogleAnalytics
         }
         if (!array_key_exists('t', $payload)) {
             throw new \InvalidArgumentException("The following parameter is required: t");
+            return false;
+        }
+        if (!in_array($payload['t'], $this->validHitTypes)) {
+            throw new \InvalidArgumentException("The hit type (t) must be a valid value.");
             return false;
         }
         if (($payload['t'] == 'transaction') && (!array_key_exists('ti', $payload))) {

@@ -574,4 +574,24 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
         $method->setAccessible(true);
         $method->invoke($this->googleAnalytics, $expectedPayload);
     }
+    /**
+     * validatePayload() if hit type (t) i not valid
+     *
+     * @return void
+     * @access public
+     * @expectedException InvalidArgumentException
+     * @author Johnathan Pulos
+     **/
+    public function testValidatePayloadThrowsErrorIfHitTypeIsInvalid()
+    {
+        $expectedPayload = array(
+            'cid'   =>  'GoogleAnalyticsTest',
+            't'     =>  'made_up',
+            'srt'   =>  10
+        );
+        $googleAnalytics = new \ReflectionClass('\PHPToolbox\GoogleAnalytics\GoogleAnalytics');
+        $method = $googleAnalytics->getMethod('validatePayload');
+        $method->setAccessible(true);
+        $method->invoke($this->googleAnalytics, $expectedPayload);
+    }
 }
