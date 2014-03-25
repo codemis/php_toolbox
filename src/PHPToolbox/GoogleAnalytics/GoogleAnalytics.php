@@ -78,6 +78,13 @@ class GoogleAnalytics
      * @return boolean
      * @access private
      * @throws \InvalidArgumentException If you pass an unacceptable key
+     * @throws \InvalidArgumentException If exf, ni, je, or aip is not a boolean integer of 0 or 1
+     * @throws \InvalidArgumentException If dns, ev, iq, pdt, plt, qt, rrt, srt, tcp, utt are not integers
+     * @throws \InvalidArgumentException If cid is not set
+     * @throws \InvalidArgumentException If t is not set
+     * @throws \InvalidArgumentException If t=transaction but ti is not set
+     * @throws \InvalidArgumentException If t=item but ti and in are not set
+     * @throws \InvalidArgumentException If t=social but sn, sa, and st are not set
      * @author Johnathan Pulos
      **/
     private function validatePayload($payload)
