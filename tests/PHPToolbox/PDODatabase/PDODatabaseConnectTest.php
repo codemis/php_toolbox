@@ -17,7 +17,7 @@
  * <http://www.gnu.org/licenses/>.
  *
  * @author Johnathan Pulos <johnathan@missionaldigerati.org>
- * @copyright Copyright 2012 Missional Digerati
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * 
  */
 namespace PHPToolbox\PDODatabase;
