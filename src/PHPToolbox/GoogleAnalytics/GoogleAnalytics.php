@@ -107,7 +107,11 @@ class GoogleAnalytics
         if ($this->validatePayload($payload)) {
             $payload['v'] = $this->apiVersion;
             $payload['tid'] = $this->trackingId;
-            $encodedPayload = urlencode(implode("&", $payload));
+            $payloadValues = array();
+            foreach ($payload as $key => $val) {
+                array_push($payloadValues, $key . "=" . urlencode($val));
+            }
+            $encodedPayload = implode("&", $payloadValues);
             $result = $this->curlUtility->makeRequest($this->url, 'POST', $encodedPayload);
             if ($this->curlUtility->responseCode == 200) {
                 return true;
