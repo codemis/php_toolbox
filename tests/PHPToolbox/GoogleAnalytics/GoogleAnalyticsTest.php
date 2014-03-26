@@ -68,6 +68,23 @@ class GoogleAnalyticsTest extends \PHPUnit_Framework_TestCase
         new GoogleAnalytics('');
     }
     /**
+     * save() should send the request to Google Analytics
+     *
+     * @return void
+     * @access public
+     * @author Johnathan Pulos
+     **/
+    public function testSaveShouldSendTheRecordToGoogleAnalytics()
+    {
+        $payload = array(
+            'cid'   =>  'ua-2332',
+            't'     =>  'pageview',
+            'dp'    =>  'test'
+        );
+        $valid = $this->googleAnalytics->save($payload);
+        $this->assertTrue($valid);
+    }
+    /**
      * validatePayload() should validate a correct payload
      *
      * @return void

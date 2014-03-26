@@ -23,7 +23,8 @@
 namespace PHPToolbox\GoogleAnalytics;
 
 /**
- * A class for sending information to the Google Analytics service via PHP.
+ * A class for sending information to the Google Analytics service via PHP.  You will need to include the CurlUtility class in
+ * this library to use
  *
  * @package default
  * @author Johnathan Pulos
@@ -37,6 +38,13 @@ class GoogleAnalytics
      * @access public
      **/
     public $apiVersion = 1;
+    /**
+     * The URL to send requests
+     *
+     * @var string
+     * @access private
+     **/
+    private $url = 'http://www.google-analytics.com/collect';
     /**
      * The Google Analytics tracking id
      *
@@ -58,6 +66,12 @@ class GoogleAnalytics
         'utv', 'utt', 'utl', 'plt', 'dns', 'pdt', 'rrt', 'tcp', 'srt', 'exd', 'exf'
     );
     /**
+     * The cURL Utility in this library
+     *
+     * @var \PHPToolbox\CachedRequest\CurlUtility
+     **/
+    private $curlUtility;
+    /**
      * An array of valid Hit Types for Google Analytics
      *
      * @var array
@@ -78,6 +92,29 @@ class GoogleAnalytics
             throw new \InvalidArgumentException("Missing the required parameter trackingId.");
         }
         $this->trackingId = $trackingId;
+        $this->curlUtility = new \PHPToolbox\CachedRequest\CurlUtility();
+    }
+    /**
+     * Save the payload to Google Analytics
+     *
+     * @param array $payload an array of options to send to Google Analytics
+     * @return boolean did it save?
+     * @access public
+     * @author Johnathan Pulos
+     **/
+    public function save($payload)
+    {
+        if ($this->validatePayload($payload)) {
+            $payload['v'] = $this->apiVersion;
+            $payload['tid'] = $this->trackingId;
+            $encodedPayload = urlencode(implode("&", $payload));
+            $result = $this->curlUtility->makeRequest($this->url, 'POST', $encodedPayload);
+            if ($this->curlUtility->responseCode == 200) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
     /**
      * validates the given payload to be sent to Google
@@ -92,6 +129,7 @@ class GoogleAnalytics
      * @throws \InvalidArgumentException If t=transaction but ti is not set
      * @throws \InvalidArgumentException If t=item but ti and in are not set
      * @throws \InvalidArgumentException If t=social but sn, sa, and st are not set
+     * @throws \InvalidArgumentException If t is not an accetable value
      * @author Johnathan Pulos
      **/
     private function validatePayload($payload)
