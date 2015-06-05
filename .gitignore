@@ -1,3 +1,5 @@
 .DS_Store
 tests/support/DatabaseSettings.php
 .ruby-gemset
+vendor
+composer.lock

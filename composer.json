@@ -1,0 +1,27 @@
+{
+  "name": "PHPToolbox/PHPToolbox",
+  "description": "A library of various PHP classes useful for developing PHP websites.",
+  "type": "library",
+  "keywords": [
+    "utility classes",
+    "variety",
+    "various"
+  ],
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Johnathan Pulos",
+      "email": "johnathan@missionaldigerati.org",
+      "homepage": "http://jpulos.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "4.4.*"
+  },
+  "autoload": {
+    "psr-4" : {
+      "PHPToolbox\\": "src/PHPToolbox/"
+    }
+  }
+}
