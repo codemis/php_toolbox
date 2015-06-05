@@ -20,6 +20,8 @@ The code here adheres to the [PHP Framework Interop Group's Accepted Standards](
 Development
 -----------
 
+This repository is following the branching technique described in [this blog post](http://nvie.com/posts/a-successful-git-branching-model/), and the semantic version set out on the [Semantic Versioning Website](http://semver.org/).
+
 Questions or problems? Please post them on the [issue tracker](https://github.com/codemis/php_toolbox/issues). You can contribute changes by forking the project and submitting a pull request.
 
 This script is created by Johnathan Pulos and is under the [GNU General Public License v3](http://www.gnu.org/licenses/gpl-3.0-standalone.html).
